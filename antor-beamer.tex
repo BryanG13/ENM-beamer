@@ -1,0 +1,68 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{outlines} 
+\usepackage{subfig}
+\usepackage{graphicx}
+% Configure paths so LaTeX finds theme files in ./theme folder
+\makeatletter
+\def\input@path{{theme/}}
+\makeatother
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{tabto}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\DeclareMathAlphabet      {\mathbf}{OT1}{cmr}{bx}{n}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\usetheme{Antibes}
+
+\usetheme[darktitle, repeattitleslide, framenumber, compress]{ANTOR}
+\title[]{\vspace{-0.5cm}\LARGE{Main title}\\[\medskipamount]}
+\subtitle[]{\fontsize{11}{7.2}\selectfont{subtitle
+}}
+\author{Author}
+\institute{Department of Engineering Management (ENM), University of Antwerp} % can be changed too 
+\email[]{email@domeain.com} 
+\date{your date here}
+\setbeamercovered{transparent}
+
+\begin{document}
+
+% ---- Title slide ---
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+% --- Other slides ---
+
+
+\begin{frame}{Objective Function Overview}
+	\begin{itemize}
+		\item Example\\
+		      → \textbf{complex} objective function
+		\item Total cost = weighted sum of component costs:
+		      \[
+			      \textstyle \text{TotalCost} = \sum (CW_n \times C_n)
+		      \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Next Steps}
+	Example of a slide with a figure.\\
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/collab.pdf}\\[4pt]
+\end{frame}
+
+% --- Contact slide ---
+\begin{frame}
+	\titlewithemail
+\end{frame}
+
+
+
+
+
+\end{document}
