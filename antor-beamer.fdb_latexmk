@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1762522754.04202 "/Users/bryangalarza/Documents/Git_repos/ANT-OR-beamer/antor-beamer.tex" "antor-beamer.pdf" "antor-beamer" 1762522754.8054 0
-  "/Users/bryangalarza/Documents/Git_repos/ANT-OR-beamer/antor-beamer.tex" 1762522753.89269 1520 92921ce31db7c18c3d071ab5182d6894 ""
+["pdflatex"] 1762863418.36922 "/Users/bryangalarza/Documents/Git_repos/ANT-OR-beamer/antor-beamer.tex" "antor-beamer.pdf" "antor-beamer" 1762863419.12217 0
+  "/Users/bryangalarza/Documents/Git_repos/ANT-OR-beamer/antor-beamer.tex" 1762863418.15991 1520 92921ce31db7c18c3d071ab5182d6894 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcss1095.tfm" 1136768653 1536 f0fa079cdc83a6ffeda21e42352cf1ea ""
@@ -229,13 +229,13 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758229107 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1758229063 3345739 31d99c1b3cce6ed77a9bf9a6a9896442 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "antor-beamer.aux" 1762522754.74576 1004 d8168011d186f6afaf87a75d5dd8fc18 "pdflatex"
-  "antor-beamer.nav" 1762522754.74622 571 686a2d273024229235dc0db1f461ba6c "pdflatex"
-  "antor-beamer.out" 1762522754.54907 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "antor-beamer.tex" 1762522753.89269 1520 92921ce31db7c18c3d071ab5182d6894 ""
+  "antor-beamer.aux" 1762863419.06494 1004 d8168011d186f6afaf87a75d5dd8fc18 "pdflatex"
+  "antor-beamer.nav" 1762863419.06542 571 686a2d273024229235dc0db1f461ba6c "pdflatex"
+  "antor-beamer.out" 1762863418.87171 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "antor-beamer.tex" 1762863418.15991 1520 92921ce31db7c18c3d071ab5182d6894 ""
   "art/antor-logo-text-white.pdf" 1428920030 24870 9cccf5d253586d9016bd13ebfb605327 ""
   "art/antor-logo.pdf" 1762340724.31413 113215 9ef84539f6bff1c9d17d26ce17a4ff69 ""
-  "art/antorBackgroundDarkBlue.pdf" 1762256061.74153 2499 577b0b3e0257771fcdfcf6de0f23adb0 ""
+  "art/antorBackgroundDarkBlue.pdf" 1762862942.06564 3298 f5f594691b90883e858810b391a48f04 ""
   "art/antorbottomwave.pdf" 1428920030 4734 a855688b36686fbbfcb752c16c34851b ""
   "pictures/collab.pdf" 1762335079.23764 253854 93edb305bd5611d14b3c436ee3fc914c ""
   "theme/beamercolorthemeANTOR.sty" 1428920030 3312 1c76e2e3e17134053cfcce7dac64ee4b ""
