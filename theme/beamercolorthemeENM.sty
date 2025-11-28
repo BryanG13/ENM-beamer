@@ -1,0 +1,65 @@
+% Copyright 2009 by Nico Schlömer
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode<presentation>
+
+% =========================================================================
+% ENM Colors
+\definecolor{enmblue}{RGB}{0,43,61}
+\colorlet{enmblue100}{enmblue}
+\colorlet{enmblue75} {enmblue!75!white}
+\colorlet{enmblue50} {enmblue!50!white}
+\colorlet{enmblue25} {enmblue!25!white}
+\colorlet{enmblue10} {enmblue!10!white}
+\colorlet{enmblue5}  {enmblue!5!white}
+
+\definecolor{enmgoldlight}{RGB}{182,132,31}
+\definecolor{enmgold}{RGB}{152,102,1}
+\colorlet{enmgold100}{enmgold}
+\colorlet{enmgold75} {enmgold!75!white}
+\colorlet{enmgold50} {enmgold!50!white}
+\colorlet{enmgold25} {enmgold!25!white}
+\colorlet{enmgold10} {enmgold!10!white}
+\colorlet{enmgold5}  {enmgold!5!white}
+
+\definecolor{darkgreen}{RGB}{0,100,0}
+% =========================================================================
+
+\setbeamercolor{structure}{fg=enmblue}%
+\setbeamercolor{normal text}{fg=black}%
+\setbeamercolor{frametitle}{fg=enmblue}%
+\setbeamercolor{frame number in foot}{fg=black}%
+\setbeamercolor{title}{fg=white}%
+\setbeamercolor{subtitle}{fg=white}%
+
+% =======================================================================
+% alert color
+\setbeamercolor{alerted text}{fg=enmgold}
+% =======================================================================
+
+% =======================================================================
+% blocks
+\setbeamercolor{block title}{use=structure,fg=white,bg=enmblue}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=enmgold}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=enmblue}
+
+\setbeamercolor{block body}{fg=enmblue,use=block title,bg=enmblue10}
+\setbeamercolor{block body alerted}{fg=enmblue,use=block title alerted,bg=enmgold10}
+\setbeamercolor{block body example}{fg=enmblue,use=block title example,bg=enmblue10}
+% =======================================================================
+
+% =======================================================================
+% numbering color
+\setbeamercolor{section number projected}{bg=enmgold75,fg=enmblue}
+% =======================================================================
+
+\setbeamercolor{itemize item}{fg=darkgreen}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{itemize subsubitem}{fg=black}
+
+\mode
+<all>

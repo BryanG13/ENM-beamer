@@ -1,0 +1,150 @@
+% Copyright 2009 by Nico Schlömer
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+% ----------------------------------------------------------------------------
+% *** required packages <<<
+% ----------------------------------------------------------------------------
+\RequirePackage{calc}
+\RequirePackage{ifthen}
+% ----------------------------------------------------------------------------
+% *** END required packages >>>
+% ----------------------------------------------------------------------------
+
+\mode<presentation>
+
+% ----------------------------------------------------------------------------
+% *** DEFINE LENGTHS <<<
+% ----------------------------------------------------------------------------
+\newlength{\margin}
+\setlength{\margin}{0.8832cm}
+
+\newlength{\ulogowidth}
+\setlength{\ulogowidth}{1.1136cm}
+\newlength{\ulogoheight}
+\setlength{\ulogoheight}{0.90066895151709692cm}
+\newlength{\ulogopadding}
+\setlength{\ulogopadding}{0.2784cm}
+% ----------------------------------------------------------------------------
+% *** END DEFINE LENGTHS >>>
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** DEFINE IMAGES <<<
+% ----------------------------------------------------------------------------
+\pgfdeclareimage[width=1\ulogowidth]{ULogo}{art/enm-logo}
+\pgfdeclareimage[height=15mm]{uTextColor}{art/enm-logo-text-white}
+\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{art/enmBackgroundDarkBlue}
+% ----------------------------------------------------------------------------
+% *** END DEFINE IMAGES <<<
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** HEADLINE <<<
+% ----------------------------------------------------------------------------
+\newlength{\logotopmargin}%
+\setlength{\logotopmargin}{0.704cm}%
+\defbeamertemplate*{headline}{ua theme}%
+{%
+	\ifnum\c@framenumber=1\else
+		\ifnum\c@framenumber=\inserttotalframenumber\else
+			\vskip\logotopmargin%
+			\hskip\margin%
+			\pgfuseimage{ULogo}%
+		\fi\fi
+}
+% ----------------------------------------------------------------------------
+% *** END HEADLINE <<<
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** FRAMETITLE <<<
+% ----------------------------------------------------------------------------
+\newlength\frametitletopmargin
+\setlength{\frametitletopmargin}{0.384cm}
+
+\newlength{\frametitlewidth}
+\setlength{\frametitlewidth}{\textwidth-\ulogowidth-\ulogopadding}
+
+\defbeamertemplate*{frametitle}{ua theme}
+{%
+	\nointerlineskip%
+	\vskip-\ulogoheight%
+	\vbox to \ulogoheight{%
+		\vfil%
+		\leftskip=\ulogowidth%
+		\advance\leftskip by\ulogopadding%
+		\begin{beamercolorbox}[leftskip=\leftskip]{frame title}%
+			\hfill\insertframetitle\par%
+		\end{beamercolorbox}%
+		\hfill\usebeamerfont{framesubtitle}\insertframesubtitle\par%
+		\vfil%
+	}%
+}
+% ----------------------------------------------------------------------------
+% *** END FRAMETITLE >>>
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** FOOTLINE <<<
+% ----------------------------------------------------------------------------
+\newlength{\textlogobottommarginDark}
+\setlength{\textlogobottommarginDark}{6.8cm}
+\newcommand\uTextColorPosDark {\pgfpoint{0.5\paperwidth}{\textlogobottommarginDark}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\defbeamertemplate*{footline}{ua theme}
+{%
+	\ifnum\c@framenumber=1
+		\pgftext[center,bottom,at=\uTextColorPosDark]{\pgfdeclareimage[height=12mm]{uTextColorSmaller}{art/enm-logo-text-white}\pgfuseimage{uTextColorSmaller}}%
+	\else
+		\ifnum\c@framenumber=\inserttotalframenumber
+			\pgftext[center,bottom,at=\uTextColorPosDark]{\pgfdeclareimage[height=12mm]{uTextColorSmaller}{art/enm-logo-text-white}\pgfuseimage{uTextColorSmaller}}%
+		\else
+			\pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
+				\usebeamerfont{frame number in foot}%
+				\usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
+			}%
+		\fi
+	\fi
+}%
+% ----------------------------------------------------------------------------
+% *** END of FOOTLINE >>>
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** MARGINS <<<
+% ----------------------------------------------------------------------------
+\setbeamersize{text margin left=\margin,%
+	text margin right=\margin}
+% ----------------------------------------------------------------------------
+% *** END MARGINS >>>
+% ----------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------
+% *** BACKGROUND <<<
+% ----------------------------------------------------------------------------
+\defbeamertemplate*{background canvas}{ua theme}
+{%
+	\ifnum\c@framenumber=1%
+		\pgfuseimage{uaBackgroundDark}
+	\else%
+		\ifnum\c@framenumber=\inserttotalframenumber%
+			\pgfuseimage{uaBackgroundDark}%
+		\fi%
+	\fi%
+}
+% ----------------------------------------------------------------------------
+% *** END BACKGROUND <<<
+% ----------------------------------------------------------------------------
+
+\mode <all>

@@ -12,18 +12,23 @@
 \usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepgfplotslibrary{statistics}
+\pgfplotsset{compat=1.18}
 
 \DeclareMathAlphabet      {\mathbf}{OT1}{cmr}{bx}{n}
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
-\usetheme{Antibes}
+\setbeamertemplate{navigation symbols}{}
 
-\usetheme[darktitle, repeattitleslide, framenumber, compress]{ANTOR}
-\title[]{\vspace{-0.5cm}\LARGE{Main title}\\[\medskipamount]}
-\subtitle[]{\fontsize{11}{7.2}\selectfont{subtitle
-}}
+\usetheme{ENM}
+\title[]{\vspace{-0.5cm}\LARGE{Title}\\[\medskipamount]}
+\subtitle[]{\fontsize{11}{7.2}\selectfont{Sub title  
+	}}
 \author{Author}
-\institute{Department, University} % can be changed too 
+\institute{ Group\\
+	Department\\
+ University} % can be changed too 
 \email[]{email@domeain.com} 
 \date{your date here}
 \setbeamercovered{transparent}
