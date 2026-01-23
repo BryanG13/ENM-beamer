@@ -1,6 +1,6 @@
 # ENM Beamer Template
 
-A LaTeX Beamer presentation template for the **ENM (Ecología y Nuevos Modelos)** at the University of Antwerp.
+A LaTeX Beamer presentation template for the **ENM (Engineering Management) and ANT/OR** at the University of Antwerp.
 
 ## About
 
