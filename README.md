@@ -10,13 +10,13 @@ This is a custom Beamer theme designed for presentations by the ENM (Ecología y
 
 1. Clone or download this repository
 2. Place the `theme/` folder in your project directory
-3. Ensure the `art/` folder is accessible for logo graphics
+3. Ensure the `Logos/` folder is accessible for logo graphics
 
 ## How to Use
 
 To use this theme in your presentation:
 
-1. **Keep the folder structure intact:** Ensure both the `theme/` and `art/` folders are in the same directory as your main `.tex` file
+1. **Keep the folder structure intact:** Ensure both the `theme/` and `Logos/` folders are in the same directory as your main `.tex` file
 2. **Add the path configuration** to your preamble (before `\usetheme`):
    ```latex
    \makeatletter
@@ -103,13 +103,13 @@ See `ENM-beamer.tex` for a complete working example.
 │   ├── beamerfontthemeENM.sty        # Font settings
 │   ├── beamerinnerthemeENM.sty       # Inner theme elements
 │   └── beamerouterthemeENM.sty       # Outer theme elements
-├── art/                               # Graphics and logos
-│   ├── enm-logo.pdf
-│   ├── enm-logo-text-white.pdf
-│   ├── enm-logo-white.pdf
-│   ├── enmBackground.pdf
-│   └── ...
+├── Logos/                             # Theme logos
+│   ├── antor-logo.pdf                # University of Antwerp logo
+│   ├── enm-en-rgb.png                # ENM logo (RGB)
+│   ├── enm-en-white.png              # ENM logo (white)
+│   └── ...                           # Other logo variants
 ├── pictures/                          # Your presentation images
-└── ENM-beamer.tex                     # Example presentation
+├── ENM_Beamer.tex                     # Example presentation
+└── README.md                          # This file
 ```
 
