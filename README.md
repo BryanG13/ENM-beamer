@@ -4,7 +4,7 @@ A LaTeX Beamer presentation template for the **ENM (Engineering Management) and 
 
 ## About
 
-This is a custom Beamer theme designed for presentations by the ENM (Ecología y Nuevos Modelos) at the University of Antwerp. The theme provides a professional and consistent look with ENM/University of Antwerp branding, including custom colors, logos, and layouts.
+This is a custom Beamer theme designed for presentations by the ENM (Engineering Management) department and the ANT/OR group at the University of Antwerp. The theme provides a professional and consistent look with ENM/University of Antwerp branding, including custom colors, logos, and layouts.
 
 ## Installation
 
