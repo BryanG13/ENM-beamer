@@ -7,6 +7,10 @@
 
 \mode<presentation>
 
+\RequirePackage{hyperref}
+\RequirePackage{environ}
+\RequirePackage{twemojis}
+
 \def\titlewithemail{\usebeamertemplate*{alternative title}\@thanks}
 
 
@@ -18,19 +22,45 @@
 %
 \def\email{\@dblarg\beamer@email}
 \long\def\beamer@email[#1]#2{%
-  \def\insertemail{\underline{#2}}%
+	\def\insertemail{\href{mailto:#2}{\underline{#2}}}%
 }
 \email{}
+
+% Event command
+\def\event{\@dblarg\beamer@event}
+\long\def\beamer@event[#1]#2{%
+	\def\insertevent{#2}%
+	\def\insertshortvent{#1}%
+}
+\event[]{}
+
+% ----------------------------------------------------------------------------
+% *** CODE SNIPPET ENVIRONMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% ----------------------------------------------------------------------------
+\newcommand*\command[1]{{\tt \textbackslash #1}}
+\NewEnviron{codesnippet}[1][0.8\textwidth]{%
+	\scriptsize
+	\qquad\framebox[#1][l]{\texttt{%
+			\setlength\textwidth{#1}%
+			\begin{minipage}{0.9\textwidth}
+				\BODY
+			\end{minipage}
+		}%
+	}
+}
+\newcommand*\ind[1][2ex]{\hspace*{#1}}
+\newcommand*\bframe[1][]{\command{begin}\{#1frame\}}
+\newcommand*\eframe[1][]{\command{end}\{#1frame\}}
 
 \mode
 <article>
 {
-  \ifx\email\@undefined
-    \newcommand{\email}[2][]{}
-  \else
-    \let\beamer@origemail=\email
-    \renewcommand{\email}[2][]{\beamer@origemail{#2}}
-  \fi
+	\ifx\email\@undefined
+		\newcommand{\email}[2][]{}
+	\else
+		\let\beamer@origemail=\email
+		\renewcommand{\email}[2][]{\beamer@origemail{#2}}
+	\fi
 
 }
 \mode
@@ -42,31 +72,46 @@
 % *** TITLE PAGE <<<
 % ----------------------------------------------------------------------------
 \defbeamertemplate*{title page}{ua theme}
-{
-  \vspace{2.5cm}
-  \vfill%
-  \centering\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
-  \ifx\insertsubtitle\@empty%
-  \else%
-    \vskip.4ex%
-    {\centering\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-  \fi%
-  \ifx\insertauthor\@empty%
-  \else%
-    \vskip5ex%
-    {\centering\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
-  \fi%
-  \ifx\insertinstitute\@empty%
-  \else%
-    \vskip.3ex%
-    {\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
-  \fi%
-  \ifx\insertdate\@empty%
-  \else%
-    \vspace{15pt}
-    {\centering \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
-  \fi%
-  \vfill%
+{%
+	% Logo text centered at top
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{uTextColor}};
+	\end{tikzpicture}
+	% Title and content in top left
+	\vspace{0.832cm}
+
+	\vspace{0.5cm}
+	\centering\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
+	\ifx\insertsubtitle\@empty%
+	\else%
+		\vskip.4ex%
+		{\centering\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+	\fi%
+	\ifx\insertsubtitle\@empty%
+	\else%
+		\vskip0ex%
+	\fi%
+	\ifx\insertauthor\@empty%
+	\else%
+		\vskip2ex%
+		{\centering\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+	\fi%
+	\ifx\insertinstitute\@empty%
+	\else%
+		\vskip.3ex%
+		{\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+	\fi%
+	\ifx\insertevent\@empty%
+	\else%
+		\vspace{15pt}
+		{\centering \usebeamerfont{date}\usebeamercolor[fg]{date}\insertevent\par}%
+	\fi%
+	\ifx\insertdate\@empty%
+	\else%
+		\vspace{8pt}
+		{\centering \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+	\fi%
+	\vfill%
 
 }
 % ----------------------------------------------------------------------------
@@ -75,42 +120,47 @@
 
 \defbeamertemplate*{alternative title}{ua theme}
 {
-  \vspace{2cm}
-  \vfill%
-  \centering\usebeamerfont{title}\usebeamercolor[fg]{title}Thank you for your attention!\par%
-  \ifx\insertsubtitle\@empty%
-  \else%
-    \vskip.1ex%
-    {\centering\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}Any questions? \par}%
-  \fi%
-  \ifx\insertauthor\@empty%
-  \else%
-    \vskip0.5cm%
-    {\centering\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
-  \fi%
-  \ifx\insertinstitute\@empty%
-  \else%
-    \vskip.3ex%
-    {\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
-  \fi%
-  \ifx\insertdate\@empty%
-  \else%
-    \vspace{15pt}
-    {\centering\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
-  \fi%
+	\vspace{2cm}
+	\vfill%
+	\centering\usebeamerfont{title}\usebeamercolor[fg]{title}Thank you for your attention!\par%
+	\ifx\insertsubtitle\@empty%
+	\else%
+		\vskip.1ex%
+		{\centering\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}Any questions? \par}%
+	\fi%
+	\ifx\insertauthor\@empty%
+	\else%
+		\vskip0.5cm%
+		{\centering\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+	\fi%
+	\ifx\insertinstitute\@empty%
+	\else%
+		\vskip.3ex%
+		{\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+	\fi%
+	\ifx\insertevent\@empty%
+	\else%
+		\vspace{15pt}
+		{\centering \usebeamerfont{date}\usebeamercolor[fg]{date}\insertevent\par}%
+	\fi%
+	\ifx\insertdate\@empty%
+	\else%
+		\vspace{8pt}
+		{\centering\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+	\fi%
 
-  \ifx\insertemail\@empty%
-  \else%
-    \vspace{15pt}
-    {\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertemail\par}%
-  \fi%
-  \vfill%
+	\ifx\insertemail\@empty%
+	\else%
+		\vspace{15pt}
+		{\centering\usebeamerfont{institute}\usebeamercolor[fg]{institute}\twemoji{e-mail}\space\insertemail\par}%
+	\fi%
+	\vfill%
 }
 
 % ----------------------------------------------------------------------------
 % *** BLOCKS <<<
 % ----------------------------------------------------------------------------
-\setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{blocks}[rounded][shadow=true]
 % ----------------------------------------------------------------------------
 % *** END BLOCKS >>>
 % ----------------------------------------------------------------------------

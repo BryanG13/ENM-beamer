@@ -17,8 +17,8 @@
 \colorlet{enmblue10} {enmblue!10!white}
 \colorlet{enmblue5}  {enmblue!5!white}
 
-\definecolor{enmgoldlight}{RGB}{182,132,31}
-\definecolor{enmgold}{RGB}{152,102,1}
+\definecolor{enmgoldlight}{RGB}{103,167,49}
+\definecolor{enmgold}{RGB}{103,167,49}
 \colorlet{enmgold100}{enmgold}
 \colorlet{enmgold75} {enmgold!75!white}
 \colorlet{enmgold50} {enmgold!50!white}
@@ -30,20 +30,36 @@
 \colorlet{darkgreen100}{darkgreen}
 \colorlet{darkgreen75}{darkgreen!75!white}
 \colorlet{darkgreen50}{darkgreen!50!white}
+% =========================================================================
 
-% Accent color (yellow‑green) — matches art/enmBackground.pdf
-\definecolor{enmaccent}{RGB}{120,164,26}
+% Accent color — matches background theme
+\definecolor{enmaccent}{RGB}{15,45,100}
 \colorlet{enmaccent100}{enmaccent}
 \colorlet{enmaccent75}{enmaccent!75!white}
 \colorlet{enmaccent50}{enmaccent!50!white}
-% =========================================================================
+\colorlet{enmaccent10}{enmaccent!10!white}
+
+% Block accent color
+\definecolor{blockaccent}{RGB}{103,167,49}
+\colorlet{blockaccent100}{blockaccent}
+\colorlet{blockaccent75}{blockaccent!75!white}
+\colorlet{blockaccent50}{blockaccent!50!white}
+\colorlet{blockaccent10}{blockaccent!10!white}
+
+% Gray colors for blocks
+\definecolor{blockgray}{RGB}{210,210,210}
+\definecolor{blockgraybody}{RGB}{240,240,240}
 
 \setbeamercolor{structure}{fg=enmblue}%
 \setbeamercolor{normal text}{fg=black}%
-\setbeamercolor{frametitle}{fg=enmblue}%
-\setbeamercolor{frame number in foot}{fg=black}%
+\setbeamercolor{frametitle}{fg=enmaccent}%
+\setbeamercolor{framesubtitle}{fg=enmaccent75}%
+\setbeamercolor{frame number in foot}{fg=lightgray}%
 \setbeamercolor{title}{fg=white}%
 \setbeamercolor{subtitle}{fg=white}%
+\setbeamercolor{author}{fg=white}%
+\setbeamercolor{institute}{fg=white}%
+\setbeamercolor{date}{fg=white}%
 
 % =======================================================================
 % alert color
@@ -52,13 +68,13 @@
 
 % =======================================================================
 % blocks
-\setbeamercolor{block title}{use=structure,fg=white,bg=enmblue}
-\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=enmgold}
-\setbeamercolor{block title example}{use=example text,fg=white,bg=enmblue}
+\setbeamercolor{block title}{fg=black,bg=blockgray}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=blockaccent}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=enmaccent}
 
-\setbeamercolor{block body}{fg=enmblue,use=block title,bg=enmblue10}
-\setbeamercolor{block body alerted}{fg=enmblue,use=block title alerted,bg=enmgold10}
-\setbeamercolor{block body example}{fg=enmblue,use=block title example,bg=enmblue10}
+\setbeamercolor{block body}{fg=enmaccent100,bg=blockgraybody}
+\setbeamercolor{block body alerted}{fg=enmaccent100,use=block title alerted,bg=blockaccent10}
+\setbeamercolor{block body example}{fg=enmaccent,use=block title example,bg=enmaccent10}
 % =======================================================================
 
 % =======================================================================

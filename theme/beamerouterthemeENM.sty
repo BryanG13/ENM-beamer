@@ -10,11 +10,54 @@
 % ----------------------------------------------------------------------------
 \RequirePackage{calc}
 \RequirePackage{ifthen}
+\RequirePackage{tikz}
+\RequirePackage{epstopdf}
+
 % ----------------------------------------------------------------------------
 % *** END required packages >>>
 % ----------------------------------------------------------------------------
 
 \mode<presentation>
+
+% ============================================================================
+% *** FOOTER VISIBILITY OPTIONS <<<
+% ============================================================================
+% Toggle to show/hide entire footer
+\newif\ifshowfootline
+\showfootlinetrue  % Default: show footer
+
+% Toggle to show/hide short field names on bottom left
+\newif\ifshowfootlineleft
+\showfootlinelefttrue  % Default: show left information
+
+% Toggle to show/hide slide numbering
+\newif\ifshowframenumber
+\showframenumbertrue  % Default: show frame numbers
+
+% Commands for users to control footer visibility
+\newcommand{\hidefooter}{\showfootlinefalse}
+\newcommand{\showfooter}{\showfootlinetrue}
+\newcommand{\hidefooterleft}{\showfootlineleftfalse}
+\newcommand{\showfooterleft}{\showfootlinelefttrue}
+\newcommand{\hideframenumber}{\showframenumberfalse}
+\newcommand{\showframenumber}{\showframenumbertrue}
+% ============================================================================
+% *** END FOOTER VISIBILITY OPTIONS >>>
+% ============================================================================
+
+% ============================================================================
+% *** HEADLINE VISIBILITY OPTIONS <<<
+% ============================================================================
+% Toggle to show/hide headline logos
+\newif\ifshowheadline
+\showheadlinetrue  % Default: show headline
+
+% Commands for users to control headline visibility
+\newcommand{\hideheadline}{\showheadlinefalse}
+\newcommand{\showheadline}{\showheadlinetrue}
+% ============================================================================
+% *** END HEADLINE VISIBILITY OPTIONS >>>
+% ============================================================================
 
 % ----------------------------------------------------------------------------
 % *** DEFINE LENGTHS <<<
@@ -36,9 +79,9 @@
 % ----------------------------------------------------------------------------
 % *** DEFINE IMAGES <<<
 % ----------------------------------------------------------------------------
-\pgfdeclareimage[width=1\ulogowidth]{ULogo}{art/enm-logo}
-\pgfdeclareimage[height=15mm]{uTextColor}{art/enm-logo-text-white}
-\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{art/enmBackground}
+\pgfdeclareimage[width=2.5\ulogowidth]{ENMLogo}{Logos/enm-en-rgb}
+\pgfdeclareimage[width=2.3\ulogowidth]{AntorLogo}{Logos/antor-logo}
+\pgfdeclareimage[height=12mm]{uTextColor}{Logos/enm-en-white}
 % ----------------------------------------------------------------------------
 % *** END DEFINE IMAGES <<<
 % ----------------------------------------------------------------------------
@@ -51,12 +94,19 @@
 \setlength{\logotopmargin}{0.704cm}%
 \defbeamertemplate*{headline}{ua theme}%
 {%
-	\ifnum\c@framenumber=1\else
-		\ifnum\c@framenumber=\inserttotalframenumber\else
-			\vskip\logotopmargin%
-			\hskip\margin%
-			\pgfuseimage{ULogo}%
-		\fi\fi
+	\ifshowheadline
+		\ifnum\c@framenumber=1\else
+			\ifnum\c@framenumber=\inserttotalframenumber\else
+				\vskip\logotopmargin%
+				\hfill%
+				\ifuseantorlogo
+					\pgfuseimage{AntorLogo}
+				\else
+					\pgfuseimage{ENMLogo}
+				\fi
+				\hspace{0.5cm}
+			\fi\fi
+	\fi
 }
 % ----------------------------------------------------------------------------
 % *** END HEADLINE <<<
@@ -67,7 +117,7 @@
 % *** FRAMETITLE <<<
 % ----------------------------------------------------------------------------
 \newlength\frametitletopmargin
-\setlength{\frametitletopmargin}{0.384cm}
+\setlength{\frametitletopmargin}{-1.216cm}
 
 \newlength{\frametitlewidth}
 \setlength{\frametitlewidth}{\textwidth-\ulogowidth-\ulogopadding}
@@ -76,14 +126,20 @@
 {%
 	\nointerlineskip%
 	\vskip-\ulogoheight%
+	\vskip0.104cm%
 	\vbox to \ulogoheight{%
 		\vfil%
-		\leftskip=\ulogowidth%
-		\advance\leftskip by\ulogopadding%
-		\begin{beamercolorbox}[leftskip=\leftskip]{frame title}%
-			\hfill\insertframetitle\par%
+		\rightskip=\ulogowidth%
+		\advance\rightskip by\ulogopadding%
+		\begin{beamercolorbox}[rightskip=\rightskip]{frame title}%
+			\insertframetitle\par%
 		\end{beamercolorbox}%
-		\hfill\usebeamerfont{framesubtitle}\insertframesubtitle\par%
+		\ifx\insertframesubtitle\@empty\else%
+			\vskip-1ex%
+			\begin{beamercolorbox}[rightskip=\rightskip]{framesubtitle}%
+				\usebeamerfont{framesubtitle}\insertframesubtitle\par%
+			\end{beamercolorbox}%
+		\fi%
 		\vfil%
 	}%
 }
@@ -102,16 +158,46 @@
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \defbeamertemplate*{footline}{ua theme}
 {%
-	\ifnum\c@framenumber=1
-		\pgftext[center,bottom,at=\uTextColorPosDark]{\pgfdeclareimage[height=12mm]{uTextColorSmaller}{art/enm-logo-text-white}\pgfuseimage{uTextColorSmaller}}%
-	\else
-		\ifnum\c@framenumber=\inserttotalframenumber
-			\pgftext[center,bottom,at=\uTextColorPosDark]{\pgfdeclareimage[height=12mm]{uTextColorSmaller}{art/enm-logo-text-white}\pgfuseimage{uTextColorSmaller}}%
+	\ifshowfootline
+		\ifnum\c@framenumber=1
+			%
 		\else
-			\pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
-				\usebeamerfont{frame number in foot}%
-				\usebeamercolor[fg]{frame number in foot}\insertframenumber{}/\inserttotalframenumber%
-			}%
+			\ifnum\c@framenumber=\inserttotalframenumber
+				\pgftext[center,bottom,at=\uTextColorPosDark]{\pgfdeclareimage[height=12mm]{uTextColorSmaller}{Logos/enm-en-white}\pgfuseimage{uTextColorSmaller}}%
+			\else
+				\ifshowfootlineleft
+					\pgftext[left,bottom,at=\pgfpoint{0.05\paperwidth}{0.02\paperwidth}]{%
+						\usebeamerfont{frame number in foot}%
+						\tiny
+						\usebeamercolor[fg]{frame number in foot}%
+						\ifx\insertshortauthor\@empty\else
+							\insertshortauthor
+						\fi%
+						\ifx\insertshortdate\@empty\else
+							\ifx\insertshortauthor\@empty\else
+								\space|\space
+							\fi
+							\insertshortdate
+						\fi%
+						\ifx\insertshortvent\@empty\else
+							\ifx\insertshortauthor\@empty
+								\ifx\insertshortdate\@empty\else
+									\space|\space
+								\fi
+							\else
+								\space|\space
+							\fi
+							\insertshortvent
+						\fi%
+					}%
+				\fi
+				\ifshowframenumber
+					\pgftext[right,bottom,at=\pgfpoint{0.95\paperwidth}{0.02\paperwidth}]{%
+						\usebeamerfont{frame number in foot}%
+						\usebeamercolor[fg]{frame number in foot}\insertframenumber/\inserttotalframenumber%
+					}%
+				\fi
+			\fi
 		\fi
 	\fi
 }%
@@ -136,10 +222,24 @@
 \defbeamertemplate*{background canvas}{ua theme}
 {%
 	\ifnum\c@framenumber=1%
-		\pgfuseimage{uaBackgroundDark}
+		\begin{tikzpicture}
+			\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+			\ifENMlighttheme
+				\fill[color={rgb,255:red,103;green,167;blue,49}] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+			\else
+				\fill[color={rgb,255:red,15;green,45;blue,100}] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+			\fi
+		\end{tikzpicture}
 	\else%
 		\ifnum\c@framenumber=\inserttotalframenumber%
-			\pgfuseimage{uaBackgroundDark}%
+			\begin{tikzpicture}
+				\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+				\ifENMlighttheme
+					\fill[color={rgb,255:red,153;green,197;blue,99}] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+				\else
+					\fill[color={rgb,255:red,87;green,108;blue,150}] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+				\fi
+			\end{tikzpicture}
 		\fi%
 	\fi%
 }

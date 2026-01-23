@@ -7,6 +7,23 @@
 
 \mode<presentation>
 
+% ============================================================================
+% *** THEME MODE OPTIONS <<<
+% ============================================================================
+\newif\ifENMlighttheme
+\ENMlightthemefalse  % Default: dark theme
+
+\newif\ifuseantorlogo
+\useantorlogofalse  % Default: use ENM logo
+
+\DeclareOptionBeamer{light}{\ENMlightthemetrue}
+\DeclareOptionBeamer{dark}{\ENMlightthemefalse}
+\DeclareOptionBeamer{antor}{\useantorlogotrue}
+\ProcessOptionsBeamer
+% ============================================================================
+% *** END THEME MODE OPTIONS >>>
+% ============================================================================
+
 \useinnertheme{ENM}
 \usefonttheme{ENM}
 \usecolortheme{ENM}
