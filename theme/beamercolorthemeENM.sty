@@ -82,9 +82,16 @@
 \setbeamercolor{section number projected}{bg=enmgold75,fg=enmblue}
 % =======================================================================
 
-\setbeamercolor{itemize item}{fg=enmaccent100}
-\setbeamercolor{itemize subitem}{fg=enmaccent75}
-\setbeamercolor{itemize subsubitem}{fg=enmaccent50}
+% Conditional bullet colors based on theme
+\ifENMlighttheme
+  \setbeamercolor{itemize item}{fg=enmgold100}
+  \setbeamercolor{itemize subitem}{fg=enmgold75}
+  \setbeamercolor{itemize subsubitem}{fg=enmgold50}
+\else
+  \setbeamercolor{itemize item}{fg=enmaccent100}
+  \setbeamercolor{itemize subitem}{fg=enmaccent75}
+  \setbeamercolor{itemize subsubitem}{fg=enmaccent50}
+\fi
 
 \mode
 <all>
