@@ -76,11 +76,7 @@
 	% Logo text centered at top
 	\begin{tikzpicture}[remember picture,overlay]
 		\ifuseantorlogo
-			\ifENMlighttheme
-				\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorGreenLogo}};
-			\else
-				\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorLightLogo}};
-			\fi
+			\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorLightLogo}};
 		\else
 			\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{uTextColor}};
 		\fi
@@ -128,7 +124,18 @@
 
 \defbeamertemplate*{alternative title}{ua theme}
 {
-	\vspace{2cm}
+	% Logo text centered at top (same as title page)
+	\begin{tikzpicture}[remember picture,overlay]
+		\ifuseantorlogo
+			\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorLightLogo}};
+		\else
+			\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{uTextColor}};
+		\fi
+	\end{tikzpicture}
+	% Title and content
+	\vspace{0.832cm}
+
+	\vspace{0.5cm}
 	\vfill%
 	\centering\usebeamerfont{title}\usebeamercolor[fg]{title}Thank you for your attention!\par%
 	\ifx\insertsubtitle\@empty%
