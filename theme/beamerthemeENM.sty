@@ -16,9 +16,13 @@
 \newif\ifuseantorlogo
 \useantorlogofalse  % Default: use ENM logo
 
+\newif\ifuseantordarklogo
+\useantordarklogofalse  % Default: use regular antor logo
+
 \DeclareOptionBeamer{light}{\ENMlightthemetrue}
 \DeclareOptionBeamer{dark}{\ENMlightthemefalse}
 \DeclareOptionBeamer{antor}{\useantorlogotrue}
+\DeclareOptionBeamer{antorDark}{\useantordarklogotrue}
 \ProcessOptionsBeamer
 % ============================================================================
 % *** END THEME MODE OPTIONS >>>

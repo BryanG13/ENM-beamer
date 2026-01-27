@@ -56,11 +56,17 @@ The theme supports several customization options that can be combined:
   ```
   Uses the ENM logo (`Logos/enm-en-rgb`) in the header of content slides.
 
-- **University of Antwerp logo:**
+- **ANT/OR logo:**
   ```latex
   \usetheme[antor]{ENM}
   ```
   Uses the University of Antwerp logo (`Logos/antor-logo`) instead of the ENM logo in the header.
+
+- **ANT/OR dark logo:**
+  ```latex
+  \usetheme[antorDark]{ENM}
+  ```
+  Uses the University of Antwerp dark logo (`Logos/antor-logo-dark`) instead of the ENM logo in the header.
 
 #### Combining Options
 
@@ -72,6 +78,12 @@ You can combine multiple options together:
 
 % Dark theme with Antwerp logo
 \usetheme[dark,antor]{ENM}
+
+% Light theme with Antwerp dark logo
+\usetheme[light,antorDark]{ENM}
+
+% Dark theme with Antwerp dark logo
+\usetheme[dark,antorDark]{ENM}
 ```
 
 ### Footer and Header Customization
