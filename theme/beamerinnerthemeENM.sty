@@ -75,7 +75,15 @@
 {%
 	% Logo text centered at top
 	\begin{tikzpicture}[remember picture,overlay]
-		\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{uTextColor}};
+		\ifuseantorlogo
+			\ifENMlighttheme
+				\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorGreenLogo}};
+			\else
+				\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{AntorLightLogo}};
+			\fi
+		\else
+			\node[anchor=north,inner sep=0.8832cm] at (current page.north) {\pgfuseimage{uTextColor}};
+		\fi
 	\end{tikzpicture}
 	% Title and content in top left
 	\vspace{0.832cm}

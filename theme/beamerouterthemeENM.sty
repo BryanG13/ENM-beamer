@@ -81,7 +81,10 @@
 % ----------------------------------------------------------------------------
 \pgfdeclareimage[width=2.5\ulogowidth]{ENMLogo}{Logos/enm-en-rgb}
 \pgfdeclareimage[width=2.6\ulogowidth]{AntorLogo}{Logos/antor-logo}
-\pgfdeclareimage[width=2.6\ulogowidth]{AntorDarkLogo}{Logos/antor-logo-dark}
+\pgfdeclareimage[width=2.8\ulogowidth]{AntorDarkLogo}{Logos/antor-logo-dark}
+\pgfdeclareimage[width=4.2\ulogowidth]{AntorLightLogo}{Logos/antor-logo-light}
+\pgfdeclareimage[width=4.2\ulogowidth]{AntorGreenLogo}{Logos/antor-logo-green}
+\pgfdeclareimage[width=2.8\ulogowidth]{AntorGreenLightLogo}{Logos/antor-logo-green-light}
 \pgfdeclareimage[height=12mm]{uTextColor}{Logos/enm-en-white}
 % ----------------------------------------------------------------------------
 % *** END DEFINE IMAGES <<<
@@ -100,14 +103,18 @@
 			\ifnum\c@framenumber=\inserttotalframenumber\else
 				\vskip\logotopmargin%
 				\hfill%
-				\ifuseantordarklogo
-					\pgfuseimage{AntorDarkLogo}
-				\else
-					\ifuseantorlogo
+				\ifuseantorlogo
+					\ifuseantorclassic
 						\pgfuseimage{AntorLogo}
 					\else
-						\pgfuseimage{ENMLogo}
+						\ifENMlighttheme
+							\pgfuseimage{AntorGreenLightLogo}
+						\else
+							\pgfuseimage{AntorDarkLogo}
+						\fi
 					\fi
+				\else
+					\pgfuseimage{ENMLogo}
 				\fi
 				\hspace{0.5cm}
 			\fi\fi

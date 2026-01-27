@@ -60,30 +60,27 @@ The theme supports several customization options that can be combined:
   ```latex
   \usetheme[antor]{ENM}
   ```
-  Uses the University of Antwerp logo (`Logos/antor-logo`) instead of the ENM logo in the header.
+  Uses the University of Antwerp logo instead of the ENM logo in the header. When combined with light mode, uses green Antor logos (`Logos/antor-logo-green` for title page and `Logos/antor-logo-green-light` for slide headers). In dark mode, uses the classic light Antor logo.
 
-- **ANT/OR dark logo:**
+- **ANT/OR classic logo:**
   ```latex
-  \usetheme[antorDark]{ENM}
+  \usetheme[antor,classic]{ENM}
   ```
-  Uses the University of Antwerp dark logo (`Logos/antor-logo-dark`) instead of the ENM logo in the header.
+  Uses the original University of Antwerp logo (`Logos/antor-logo`) regardless of the theme mode.
 
 #### Combining Options
 
 You can combine multiple options together:
 
 ```latex
-% Light theme with Antwerp logo
+% Light theme with Antwerp logo (uses green logos)
 \usetheme[light,antor]{ENM}
 
-% Dark theme with Antwerp logo
+% Dark theme with Antwerp logo (uses dark logo)
 \usetheme[dark,antor]{ENM}
 
-% Light theme with Antwerp dark logo
-\usetheme[light,antorDark]{ENM}
-
-% Dark theme with Antwerp dark logo
-\usetheme[dark,antorDark]{ENM}
+% Light theme with classic Antwerp logo
+\usetheme[light,antor,classic]{ENM}
 ```
 
 ### Footer and Header Customization
@@ -116,7 +113,11 @@ See `ENM-beamer.tex` for a complete working example.
 │   ├── beamerinnerthemeENM.sty       # Inner theme elements
 │   └── beamerouterthemeENM.sty       # Outer theme elements
 ├── Logos/                             # Theme logos
-│   ├── antor-logo.pdf                # University of Antwerp logo
+│   ├── antor-logo.pdf                # University of Antwerp logo (classic)
+│   ├── antor-logo-dark.pdf           # University of Antwerp logo (dark)
+│   ├── antor-logo-green.pdf          # University of Antwerp logo (green, for light theme)
+│   ├── antor-logo-green-light.pdf    # University of Antwerp logo (green light, for light theme headers)
+│   ├── antor-logo-light.pdf          # University of Antwerp logo (light, for dark theme)
 │   ├── enm-en-rgb.png                # ENM logo (RGB)
 │   ├── enm-en-white.png              # ENM logo (white)
 │   └── ...                           # Other logo variants
