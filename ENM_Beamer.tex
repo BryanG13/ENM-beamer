@@ -15,21 +15,7 @@
 \usepackage{pgfplots}
 \usepackage{epstopdf}
 
-\usepgfplotslibrary{statistics}
-\pgfplotsset{compat=1.18}
-
-\DeclareMathAlphabet{\mathbf}{OT1}{cmr}{bx}{n}
-\setbeamertemplate{section in toc}[sections numbered]
-\setbeamertemplate{subsection in toc}[subsections numbered]
-\setbeamertemplate{navigation symbols}{}
-
-% Enable figure numbering in captions
-\setbeamertemplate{caption}[numbered]
-
-% --- Footnote and footer adjustments --- 
-\addtobeamertemplate{footnote}{}{\vspace{2em}} % Raise footnotes above the bottom footer
-\let\oldfootnotesize\footnotesize
-\renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
+% You can hide footer/headers globally here by uncommenting one of the lines below:
 %\hidefooterleft %= hide short field names in footer (bottom left)
 %\hideframenumber %= hide slide numbering in footer (bottom right)	
 %\hidefooter %= hide entire footer
@@ -37,6 +23,7 @@
 
 
 \usetheme[dark,antor]{ENM}
+\qrcode[]{pictures/QRcode.png}
 \title[]{Title}
 \subtitle[]{Subtitle}
 \author[Short Author Names] % (optional, for multiple authors)
